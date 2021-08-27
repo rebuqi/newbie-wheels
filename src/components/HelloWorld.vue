@@ -1,20 +1,17 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <h3>Installed CLI Plugins</h3>
-    <h3>Essential Links</h3>
-    <h3>Ecosystem</h3>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String
-  }
+    msg: String,
+  },
 })
 </script>
 
