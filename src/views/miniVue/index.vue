@@ -1,6 +1,7 @@
 <template>
-  <div>{{ readOnlyAge }}</div>
+  <div>{{ counts }}</div>
   <div>{{ state.name }}</div>
+  <div>{{ props.propsName }}</div>
   <button @click="countAdd">on</button>
 </template>
 
@@ -8,9 +9,6 @@
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "miniVue",
-  props: {
-    propsName: { type: String, default: "" }
-  },
 });
 </script>
 <script setup>
@@ -22,17 +20,24 @@ import {
   onMounted,
   onBeforeUnmount,
   onErrorCaptured,
+  defineProps,
+  defineEmits,
 } from "vue";
+const props = defineProps({
+  propsName: { type: String, default: "propsName1" },
+});
 let count = ref(0);
 
 let state = reactive({
   name: "test",
 });
 
-const readOnlyAge = computed(() => count.value);
+const counts = computed(() => count.value);
 
 onMounted(() => {
   console.log("mounted!");
+  const emit = defineEmits(["propsName"]);
+  emit("update:propsName");
 });
 
 let countAdd = () => {
